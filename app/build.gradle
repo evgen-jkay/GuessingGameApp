@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.jkay.guessinggameapp'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.jkay.guessinggameapp"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 3
         versionName "1.1"
 
