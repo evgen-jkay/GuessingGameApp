@@ -22,4 +22,11 @@
     <string name="to10">від 1 до 10</string>
     <string name="to100">від 1 до 100</string>
     <string name="to1000">від 1 до 1000</string>
+    <string name="isLoss">"Вибачте, у вас вичерпано спроби. "</string>
+    <string name="wasTheNumber"> було число.</string>
+    <string name="theRange">Виберіть діапазон:</string>
+    <string name="textStats">"Ти виграв "</string>
+    <string name="textStats1">" з "</string>
+    <string name="textStats2">" ігри, "</string>
+    <string name="ok">ОК</string>
 </resources>

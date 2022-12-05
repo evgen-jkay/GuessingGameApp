@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">GuessingGameApp</string>
+    <string name="app_name" translatable="false">Guessing Game</string>
     <string name="author">Evgen Landarenko</string>
 
     <string name="textView">Guessing Game</string>
     <string name="textView2">Enter a number between 1 and 100:</string>
+    <string name="textView3">Enter a whole number between 1 and </string>
     <string name="txtGuess">Enter number</string>
     <string name="btnGuess">Guess!</string>
     <string name="lblOutput">Enter a number, then click Guess!</string>
     <!-- MainActivity -->
     <string name="isLow">is too low. Try again.</string>
-    <string name="isHigh">" is too high. Try again."</string>
+    <string name="isHigh"> is too high. Try again.</string>
     <!-- Menu -->
     <string name="settings">Settings</string>
     <string name="new_game">New Game</string>
     <string name="game_stats">Game Stats</string>
     <string name="about">About</string>
+    <string name="isCorrect"> is correct. You win after </string>
+    <string name="tries"> tries!</string>
+
+    <string name="to10">1 to 10</string>
+    <string name="to100">1 to 100</string>
+    <string name="to1000">1 to 1000</string>
+    <string name="isLoss">Sorry, you\'re out of tries.</string>
+    <string name="wasTheNumber"> was the number.</string>
+    <string name="theRange">Select the Range:</string>
+    <string name="textStats">"You have won "</string>
+    <string name="textStats1">out of</string>
+    <string name="textStats2">" games, "</string>
+    <string name="ok">OK</string>
 </resources>

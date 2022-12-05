@@ -21,6 +21,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+/**
+ * @author Eugen Landarenko
+ * @version 1.1
+ * @since verCode 2
+ */
 public class MainActivity extends AppCompatActivity {
     private EditText txtGuess;
     private Button btnGuess;
@@ -31,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private int numberOfTries;
     private int maxTries = 7;
 
+    /**
+     * Game logic.
+     *
+     * @since verCode 1
+     */
     public void checkGuess() {
         String message = "";
 
@@ -38,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
             int guess = Integer.parseInt(txtGuess.getText().toString());
             numberOfTries++;
             if (guess < theNumber)
-                message = guess + getText(R.string.isLow).toString();
+                message = guess + getString(R.string.isLow);
             else if (guess > theNumber)
-                message = guess + getText(R.string.isHigh).toString();
+                message = guess + getString(R.string.isHigh);
             else {
-                message = guess + getText(R.string.isCorrect).toString() + numberOfTries + getText(R.string.tries).toString();
+                message = guess + getString(R.string.isCorrect) + numberOfTries + getString(R.string.tries);
                 SharedPreferences preferences =
                         PreferenceManager.getDefaultSharedPreferences(this);
                 int gamesWon = preferences.getInt("gamesWon", 0) + 1;
@@ -53,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 newGame();
             }
         } catch (Exception e) {
-            message = getText(R.string.textView3).toString() + range + ".";
+            message = getString(R.string.textView3) + range + ".";
         } finally {
             if (numberOfTries >= maxTries) {
-                message = "Sorry, you're out of tries." + theNumber + "was the number";
+                message = getString(R.string.isLoss) + theNumber + getString(R.string.wasTheNumber);
                 SharedPreferences preferences =
                         PreferenceManager.getDefaultSharedPreferences(this);
                 int gamesLost = preferences.getInt("gamesLost", 0) + 1;
@@ -70,16 +80,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * New Game Start.
+     *
+     * @since verCode 1
+     */
     public void newGame() {
         theNumber = (int) (Math.random() * range + 1);
         maxTries = (int) (Math.log(range) / Math.log(2) + 1);
         numberOfTries = 0;
-        lblRange.setText("Enter a number between 1 and " + range + ".");
+        lblRange.setText(getString(R.string.textView3) + range + ".");
         txtGuess.setText("" + range / 2);
         txtGuess.requestFocus();
         txtGuess.selectAll();
     }
 
+    /**
+     * Create Options Menu.
+     *
+     * @since verCode 1
+     * @param menu
+     * @return true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -87,16 +109,26 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Options Item Selected.
+     *
+     * @since verCode 2
+     *
+     * @param item
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            // Settings Gama
             case R.id.action_settings:
                 final CharSequence[] items = {
-                        getText(R.string.to10),
-                        getText(R.string.to100),
-                        getText(R.string.to1000)
+                        getString(R.string.to10),
+                        getString(R.string.to100),
+                        getString(R.string.to1000)
                 };
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Select the Range:");
+                builder.setTitle(getString(R.string.theRange));
                 builder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int item) {
@@ -124,9 +156,11 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog alert = builder.create();
                 alert.show();
                 return true;
+            // New Game Start
             case R.id.action_new_game:
                 newGame();
                 return true;
+            // Game Statistic
             case R.id.action_game_stats:
                 SharedPreferences preferences =
                         PreferenceManager.getDefaultSharedPreferences(this);
@@ -135,10 +169,11 @@ public class MainActivity extends AppCompatActivity {
                 int total = gamesLost + gamesWon;
                 int percent = Math.round((gamesWon * 100.0f) / (total));
                 AlertDialog stateDialog = new AlertDialog.Builder(MainActivity.this).create();
-                stateDialog.setTitle("Guessing Game Stats");
-                stateDialog.setMessage("You have won " + gamesWon + " out of " + total +
-                        " games, " + percent + "%! \nWay to go!");
-                stateDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                stateDialog.setTitle(getString(R.string.game_stats));
+                stateDialog.setMessage(getString(R.string.textStats) + gamesWon
+                        + getString(R.string.textStats1) + total
+                        + getString(R.string.textStats2) + percent + "%!");
+                stateDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -147,11 +182,12 @@ public class MainActivity extends AppCompatActivity {
                         });
                 stateDialog.show();
                 return true;
+            // About
             case R.id.action_about:
                 AlertDialog aboutDialog = new AlertDialog.Builder(MainActivity.this).create();
-                aboutDialog.setTitle("About Guessing Game");
-                aboutDialog.setMessage("(c)2022 Evgen Landarenko");
-                aboutDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                aboutDialog.setTitle(getString(R.string.about) + " " + getString(R.string.app_name));
+                aboutDialog.setMessage("(c)2022 " + getString(R.string.author));
+                aboutDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -165,6 +201,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Rang in game.
+     *
+     * @param newRange
+     * @since verCode 1
+     */
     public void storeRange(int newRange) {
         SharedPreferences preferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
@@ -174,17 +216,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Main method.
+     *
+     * @param savedInstanceState
+     *
+     * @since verCode 2
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // AdMob start
         MobileAds.initialize(this, initializationStatus -> {
         });
 
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        // end AdMob
 
         txtGuess = (EditText) findViewById(R.id.txtGuess);
         btnGuess = (Button) findViewById(R.id.btnGuess);
