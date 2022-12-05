@@ -28,9 +28,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <!-- ca-app-pub-3056664527817629~8276062418 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3056664527817629~8276062418"/>
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
     </application>
 
 </manifest>
