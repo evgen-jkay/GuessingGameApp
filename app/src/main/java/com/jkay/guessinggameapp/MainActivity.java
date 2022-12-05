@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
             int guess = Integer.parseInt(txtGuess.getText().toString());
             numberOfTries++;
             if (guess < theNumber)
-                message = guess + getString(R.string.isLow);
+                message = guess + " " + getString(R.string.isLow);
             else if (guess > theNumber)
-                message = guess + getString(R.string.isHigh);
+                message = guess + " " + getString(R.string.isHigh);
             else {
-                message = guess + getString(R.string.isCorrect) + numberOfTries + getString(R.string.tries);
+                message = guess + " " + getString(R.string.isCorrect) + numberOfTries + " " + getString(R.string.tries);
                 SharedPreferences preferences =
                         PreferenceManager.getDefaultSharedPreferences(this);
                 int gamesWon = preferences.getInt("gamesWon", 0) + 1;
@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 newGame();
             }
         } catch (Exception e) {
-            message = getString(R.string.textView3) + range + ".";
+            message = getString(R.string.textView3) + " " + range + ".";
         } finally {
             if (numberOfTries >= maxTries) {
-                message = getString(R.string.isLoss) + theNumber + getString(R.string.wasTheNumber);
+                message = getString(R.string.isLoss) + " " + theNumber + " " +  getString(R.string.wasTheNumber);
                 SharedPreferences preferences =
                         PreferenceManager.getDefaultSharedPreferences(this);
                 int gamesLost = preferences.getInt("gamesLost", 0) + 1;
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         theNumber = (int) (Math.random() * range + 1);
         maxTries = (int) (Math.log(range) / Math.log(2) + 1);
         numberOfTries = 0;
-        lblRange.setText(getString(R.string.textView3) + range + ".");
+        lblRange.setText(getString(R.string.textView3) + " " + range + ".");
         txtGuess.setText("" + range / 2);
         txtGuess.requestFocus();
         txtGuess.selectAll();
@@ -170,9 +170,9 @@ public class MainActivity extends AppCompatActivity {
                 int percent = Math.round((gamesWon * 100.0f) / (total));
                 AlertDialog stateDialog = new AlertDialog.Builder(MainActivity.this).create();
                 stateDialog.setTitle(getString(R.string.game_stats));
-                stateDialog.setMessage(getString(R.string.textStats) + gamesWon
-                        + getString(R.string.textStats1) + total
-                        + getString(R.string.textStats2) + percent + "%!");
+                stateDialog.setMessage(getString(R.string.textStats) + " " + gamesWon
+                        + " " + getString(R.string.textStats1) + " " + total
+                        + " " + getString(R.string.textStats2) + " " + percent + "%!");
                 stateDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
                         new DialogInterface.OnClickListener() {
                             @Override
