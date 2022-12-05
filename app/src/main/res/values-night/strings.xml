@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">GuessingGameApp</string>
+    <string name="author">Evgen Landarenko</string>
+
+    <string name="textView">Guessing Game</string>
+    <string name="textView2">Enter a number between 1 and 100:</string>
+    <string name="txtGuess">Enter number</string>
+    <string name="btnGuess">Guess!</string>
+    <string name="lblOutput">Enter a number, then click Guess!</string>
+    <!-- MainActivity -->
+    <string name="isLow">is too low. Try again.</string>
+    <string name="isHigh">" is too high. Try again."</string>
+    <!-- Menu -->
+    <string name="settings">Settings</string>
+    <string name="new_game">New Game</string>
+    <string name="game_stats">Game Stats</string>
+    <string name="about">About</string>
+</resources>

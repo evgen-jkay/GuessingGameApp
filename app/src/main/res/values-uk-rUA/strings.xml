@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="author">Євген Ландаренко</string>
+
+    <string name="textView">Вгадай Число</string>
+    <string name="textView2">Введіть ціле число від 1 до 100.</string>
+    <string name="textView3">Введіть ціле число </string>
+    <string name="txtGuess">Введіть ціле число</string>
+    <string name="btnGuess">Вгадати!</string>
+    <string name="lblOutput">Введіть ціле число та натисни Вгадати!</string>
+    <!-- MainActivity -->
+    <string name="isLow"> замале. Спробуй ще!</string>
+    <string name="isHigh"> завелике. Спробуй ще!</string>
+    <!-- Menu -->
+    <string name="settings">Налаштуваня</string>
+    <string name="new_game">Нова Гра!</string>
+    <string name="game_stats">Статистика</string>
+    <string name="about">Про Нас</string>
+    <string name="isCorrect"> правильно. Ви перемогли після </string>
+    <string name="tries"> спроб!</string>
+
+    <string name="to10">від 1 до 10</string>
+    <string name="to100">від 1 до 100</string>
+    <string name="to1000">від 1 до 1000</string>
+</resources>
